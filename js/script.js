@@ -32,19 +32,20 @@ const fetchPokemon = () => {
         let cantEstadisticas = Object.keys(data.stats).length;
         for(let i = 0; i < cantEstadisticas ; i++)
         {
-            pokeEstadisticas += data.stats[i].stat.name + " ";
+            pokeEstadisticas += "\n" + data.stats[i].stat.name + ": " +
+            data.stats[i].base_stat;
         }
 
         let pokeMovs = "";
         let cantMovs = Object.keys(data.moves).length;
         for(let i = 0; i < cantMovs ; i++)
         {
-            pokeMovs += data.moves[i].move.name + "\n";
+            pokeMovs += "\n" + data.moves[i].move.name;
         }
 
         pokeImage(pokeImg);
         nombre.innerHTML = pokeInput.toUpperCase();
-        setDatos(
+        setDatos("#" + data.order + "\n\n" +
             "Tipo(s): " + pokeTipo + "\n\n" + 
             "Estadisticas: " +  pokeEstadisticas + "\n\n" + 
             "Movimientos: " + pokeMovs);
